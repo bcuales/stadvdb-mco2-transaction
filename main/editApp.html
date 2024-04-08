@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ellipse-page">
+    <h1>Edit Appointment</h1>
+  </div>
+
+  <div class="container">
+    <div class="app-info">
+      <div class="appID">
+        <h4>Appointment ID</h4>
+        <input type="text" id="appointmentID" placeholder="Enter Appointment ID...">
+      </div>
+      <h3>Appointment Information</h3>
+      <div class="app-info-fill">
+        <div class="app-type">
+          <h4>Appointment Type</h4>
+          <div class="consul">
+            <input type="radio" id="consultation" name="appointmentType" value="Consultation">
+            <label for="consultation">Consultation</label>
+          </div>
+          <div class="inpat">
+            <input type="radio" id="inpatient" name="appointmentType" value="Inpatient">
+            <label for="inpatient">Inpatient</label>
+          </div>
+        </div>
+        <div class="app-mode">
+          <h4>Mode of Appointment</h4>
+          <div class="virtual">
+            <input type="radio" id="Virtual" name="appointmentMode" value="Virtual">
+            <label for="Virtual">Virtual</label>
+          </div>
+          <div class="ftf">
+            <input type="radio" id="Face-to-Face" name="appointmentMode" value="Face-to-Face">
+            <label for="Face-to-Face">Face-to-Face</label>
+          </div>
+        </div>
+        <div class="doc-spec">
+          <h4>Doctors Specialty</h4>
+          <input type="text" id="doctorsSpecialty" placeholder="Enter specialty...">
+        </div>
+      </div>
+    </div>
+    <div class="breaker"></div>
+    <div class="hosp-info">
+      <h3>Hospital Information</h3>
+      <div class="hosp-info-fill">
+        <!-- Hospital or Clinic -->
+        <div class="hosp-clin">
+          <h4>Hospital or Clinic</h4>
+          <div class="hospital">
+            <input type="radio" id="hospital-radio" name="hospital-clinic" value="Hospital">
+            <label for="hospital-radio">Hospital</label>
+          </div>
+          <div class="clinic">
+            <input type="radio" id="clinic-radio" name="hospital-clinic" value="Clinic">
+            <label for="clinic-radio">Clinic</label>
+          </div>
+        </div>
+        <!-- Hospital/Clinic Location -->
+          <div class="hosp-clin-region">
+            <h4>Hospital/Clinic Region</h4>
+            <input type="text" id="hospitalRegion" placeholder="Enter region...">
+          </div>
+          <div class="hosp-clin-province">
+            <h4>Hospital/Clinic Province</h4>
+            <input type="text" id="hospitalProvince" placeholder="Enter province...">
+          </div>
+          <div class="hosp-clin-city">
+            <h4>Hospital/Clinic City</h4>
+            <input type="text" id="hospitalCity" placeholder="Enter city...">
+          </div>
+      </div>
+      <div class="hosp-clin-name">
+        <h4>Hospital/Clinic Name</h4>
+        <input type="text" id="hospitalName" placeholder="Enter name...">
+      </div>
+    </div>
+    <div class="breaker"></div>
+    <div class="patient-info">
+      <h4>Patient Information</h4>
+      <div class="patient-info-fill">
+        <div class="patient-info-sex">
+          <h4>Patient Sex</h4>
+          <div class="male">
+            <input type="radio" id="male-radio" name="patient-sex" value="Male">
+            <label for="male-radio">Male</label>
+          </div>
+          <div class="female">
+            <input type="radio" id="female-radio" name="patient-sex" value="Female">
+            <label for="female-radio">Female</label>
+          </div>
+        </div>
+        <div class="patient-age">
+          <h4>Patient Age</h4>
+          <input type="text" id="patientAge" placeholder="Enter age...">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-choices">
+    <button class="buttonC" role="button">Edit Appointment</button>
+    <button class="buttonC" role="button">Cancel</button>
+  </div>
+</body>

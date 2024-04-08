@@ -1,0 +1,353 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+@font-face {
+  font-family: alagard;
+  src: url(fonts/alagard.ttf);
+}
+
+body {
+  background-image: url(images/background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: center;
+}
+
+/* TITLE */
+.ellipse{
+  background-color: white;
+  border:5px #c0c0c0;
+  height: 150px;
+  width: 400px;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+
+body h1{
+  font-family: alagard;
+  color: #9BDE7E;
+  -webkit-text-stroke-width: 0.05px;
+  -webkit-text-stroke-color: black;
+  padding: 15px 0;
+  font-size: 60px;
+}
+
+/* TITLE FOR SUB-PAGES */
+.ellipse-page{
+  background-color: #9BDE7E;
+  border:5px black;
+  height: 150px;
+  width: 400px;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+
+body h1{
+  font-family: alagard;
+  color: white;
+  -webkit-text-stroke-width: 0.05px;
+  -webkit-text-stroke-color: black;
+  padding: 15px 0;
+  font-size: 60px;
+}
+
+/* BUTTONS */
+.buttonC {
+  background-color: #9BDE7E;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Ubuntu Mono, monospace;
+  font-size: 18px;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 60px;
+  width: 275px;
+}
+
+.buttonC:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+.buttonC:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .choices .buttonC {
+    padding: 16px 48px;
+  }
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 300px; /* Adjust height as needed */
+  padding: 30px;
+}
+
+.button-choices {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  height: 200px; /* Adjust height as needed */
+  padding: 20px;
+  justify-content: center;
+}
+
+.breaker {
+  color : red;
+  border : 1px solid #808080;
+  opacity: 60%;
+  margin-bottom : 10px;
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 100px;
+}
+
+
+/* ADD APPOINTMENT PAGE */
+
+/* APPOINTMENT INFORMATION */
+.app-info{
+  margin-left: 50px;
+  margin-top: 30px;
+  gap: 50px;
+}
+
+.app-info-fill{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 200px;
+}
+
+.app-info-fill .app-type{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-info-fill .app-mode{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-info-fill .doc-spec{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-info-fill .doc-spec #doctorsSpecialty{
+  width: 250px;
+}
+
+/* HOSPITAL INFORMATION */
+
+.hosp-info{
+  margin-left: 50px;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.hosp-info-fill{
+  display: flex;
+  margin-top: 10px;
+  gap: 125px;
+}
+
+.hosp-info-fill .hosp-clin{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hosp-info-fill .hosp-clin-region{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.hosp-info-fill .hosp-clin-province{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.hosp-info-fill .hosp-clin-city{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.hosp-clin-name {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.hosp-clin-name #hospitalName{
+  width: 415px;
+}
+
+/* PATIENT INFORMATION */
+.patient-info{
+  margin-left: 50px;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.patient-info-fill{
+  display: flex;
+  margin-top: 10px;
+  gap: 125px;
+}
+
+.patient-info-fill .patient-age{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.patient-info-fill .patient-age #patientAge{
+  width:215px;
+}
+
+.patient-info-fill .patient-info-sex{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+
+/* EDIT APPOINTMENT */
+
+.appID{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.appID #appointmentID{
+  width: 210px;
+}
+
+/* DELETE APPOINTMENT */
+
+.delete-info{
+  margin-left: 50px;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.delete-info .delete-appID{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.delete-info .delete-appID #delAppID{
+  width: 300px;
+  height: 30px;
+}
+
+.button-delete{
+  display: flex;
+  height: 50px; /* Adjust height as needed */
+  padding: 20px;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.button-delete .buttonC{
+  height: 50px;
+  width: 225px;
+  font-size: 15px;
+}
+
+.delete-info .breaker {
+  margin-left: 20px;
+}
+
+
+
+/* SEARCH APPOINTMENT */
+
+.search-info{
+  margin-left: 50px;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.search-info .search-appID{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.search-info .search-appID #searchAppID{
+  width: 300px;
+  height: 30px;
+}
+
+.button-search{
+  display: flex;
+  height: 50px; /* Adjust height as needed */
+  padding: 20px;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.button-search .buttonC{
+  height: 50px;
+  width: 225px;
+  font-size: 15px;
+}
+
+.search-info .breaker {
+  margin-left: 20px;
+}
+
+.search-info h2{
+  margin-left: 20px
+}
