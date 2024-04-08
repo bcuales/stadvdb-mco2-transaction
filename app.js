@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Route handler for the root path
-app.get('/mainPage', (req, res) => {
+app.get('/', (req, res) => {
   res.render('mainPage', { title: 'Transaction Management' });
 });
 
