@@ -1,0 +1,285 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+@font-face {
+  font-family: alagard;
+  src: url(fonts/alagard.ttf);
+}
+
+@font-face {
+  font-family: genty;
+  src: url(fonts/genty.ttf);
+}
+
+body {
+  background-image: url(images/background2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: center;
+}
+
+/* TITLE */
+.ellipse{
+  background-color: white;
+  border:5px #c0c0c0;
+  height: 150px;
+  width: 400px;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+
+body h1{
+  font-family: alagard;
+  color: #dd82e1;
+  -webkit-text-stroke-width: 0.05px;
+  -webkit-text-stroke-color: black;
+  padding: 15px 0;
+  font-size: 60px;
+}
+
+/* BUTTONS */
+.buttonC {
+  background-color: #dd82e1;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Ubuntu Mono, monospace;
+  font-size: 18px;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 60px;
+  width: 275px;
+}
+
+.buttonC:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+.buttonC:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .choices .buttonC {
+    padding: 16px 48px;
+  }
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Adjust height as needed */
+  padding: 30px;
+}
+
+
+/* NODES */
+.parent-container {
+  display: flex;
+  flex-direction: column; /* Stack the squares and togglers vertically */
+  padding-bottom: 50px;
+}
+
+.node-squares {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.node-squares h1{
+  font-family:genty;
+  color:#dd82e1;
+  text-align: center;
+  font-size: 30px;
+}
+
+#center-node h1{
+  font-size: 25px;
+}
+
+#luz-visa-node h1{
+  font-size: 20px;
+}
+
+#mindanao-node h1{
+  font-size: 25px;
+}
+
+#center-node{
+  width:200px;
+  height:250px;
+  background:white;
+  box-shadow: black;
+}
+
+#center-node img{
+  width:165px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+#luz-visa-node{
+  width:200px;
+  height:250px;
+  background:white;
+  box-shadow: black;
+}
+
+#luz-visa-node img{
+  width:120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mindanao-node{
+  width:200px;
+  height:250px;
+  background:white;
+  box-shadow: black;
+}
+
+#mindanao-node img{
+  width:150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* TOGGLE SWITCHES */
+.toggle-nodes {
+  display: flex;
+  justify-content: space-between; /* Align the toggler items with the squares */
+  padding: 0 100px; /* Match the padding of the squares */
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #dd82e1;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #dd82e1;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.toggle-nodes .luzons-switch .switch .slider {
+  margin-right:40px;
+}
+
+
+/* REPLICATION LOGS PAGE */
+
+/* TABLE */
+.contents {
+  padding-top: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  background-color: white;
+  font-weight: bold;
+  font-family: ubuntu mono, monospace;
+}
+
+th {
+  background-color: #dd82e1;
+  font-weight: bold;
+  font-family: ubuntu mono, monospace;
+  color: white;
+}

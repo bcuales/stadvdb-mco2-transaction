@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Appointment</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../public/styles.css">
 </head>
 <body>
   <div class="ellipse-page">
-    <h1>Add Appointment</h1>
+    <h1>Edit Appointment</h1>
   </div>
 
   <div class="container">
     <div class="app-info">
+      <div class="appID">
+        <h4>Appointment ID</h4>
+        <input type="text" id="appointmentID" placeholder="Enter Appointment ID...">
+      </div>
       <h3>Appointment Information</h3>
       <div class="app-info-fill">
         <div class="app-type">
@@ -43,9 +47,7 @@
         </div>
       </div>
     </div>
-
     <div class="breaker"></div>
-
     <div class="hosp-info">
       <h3>Hospital Information</h3>
       <div class="hosp-info-fill">
@@ -80,9 +82,7 @@
         <input type="text" id="hospitalName" placeholder="Enter name...">
       </div>
     </div>
-
     <div class="breaker"></div>
-    
     <div class="patient-info">
       <h4>Patient Information</h4>
       <div class="patient-info-fill">
@@ -106,7 +106,7 @@
   </div>
 
   <div class="button-choices">
-    <button class="buttonC" role="button">Create Appointment</button>
+    <button class="buttonC" role="button">Edit Appointment</button>
     <a href="/" class="buttonC" role="button">Cancel</a>
   </div>
 </body>
