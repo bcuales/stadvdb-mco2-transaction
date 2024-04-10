@@ -95,8 +95,8 @@ body h1{
 
 .choices {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 100px;
   align-items: center; /* Adjust height as needed */
   padding: 30px;
 }
@@ -128,12 +128,12 @@ body h1{
   font-size: 25px;
 }
 
-#luz-visa-node h1{
-  font-size: 20px;
+#luzon-node h1{
+  font-size: 25px;
 }
 
-#mindanao-node h1{
-  font-size: 25px;
+#minda-visa-node h1{
+  font-size: 18px;
 }
 
 #center-node{
@@ -151,28 +151,28 @@ body h1{
   margin-bottom: auto;
 }
 
-#luz-visa-node{
+#luzon-node{
   width:200px;
   height:250px;
   background:white;
   box-shadow: black;
 }
 
-#luz-visa-node img{
+#luzon-node img{
   width:120px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-#mindanao-node{
+#minda-visa-node{
   width:200px;
   height:250px;
   background:white;
   box-shadow: black;
 }
 
-#mindanao-node img{
+#minda-visa-node img{
   width:150px;
   display: block;
   margin-left: auto;
@@ -282,4 +282,55 @@ th {
   font-weight: bold;
   font-family: ubuntu mono, monospace;
   color: white;
+}
+
+
+/* BUTTON APPLICATION MANAGEMENT */
+
+.buttonA {
+  background-color: #9BDE7E;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Ubuntu Mono, monospace;
+  font-size: 18px;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 60px;
+  width: 275px;
+}
+
+.buttonA:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+.buttonA:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .choices .buttonC {
+    padding: 16px 48px;
+  }
 }

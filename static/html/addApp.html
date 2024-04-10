@@ -38,14 +38,13 @@
           </div>
         </div>
         <div class="doc-spec">
-          <h4>Doctors Specialty</h4>
-          <input type="text" id="doctorsSpecialty" placeholder="Enter specialty...">
+          <label for="doctor-specialty">Doctor Specialty</label>
+          <select name="doctor-specialty" id="doctor-specialty">
+          </select>
         </div>
       </div>
     </div>
-
     <div class="breaker"></div>
-
     <div class="hosp-info">
       <h3>Hospital Information</h3>
       <div class="hosp-info-fill">
@@ -63,26 +62,28 @@
         </div>
         <!-- Hospital/Clinic Location -->
           <div class="hosp-clin-region">
-            <h4>Hospital/Clinic Region</h4>
-            <input type="text" id="hospitalRegion" placeholder="Enter region...">
+            <label for="hosp-clin-reg">Hospital/Clinic Region</label>
+            <select name="hosp-clin-reg" id="hosp-clin-reg">
+            </select>
           </div>
           <div class="hosp-clin-province">
-            <h4>Hospital/Clinic Province</h4>
-            <input type="text" id="hospitalProvince" placeholder="Enter province...">
+            <label for="hosp-clin-prov">Hospital/Clinic Province</label>
+            <select name="hosp-clin-prov" id="hosp-clin-prov">
+            </select>
           </div>
           <div class="hosp-clin-city">
-            <h4>Hospital/Clinic City</h4>
-            <input type="text" id="hospitalCity" placeholder="Enter city...">
+            <label for="hosp-clin-city">Hospital/Clinic City</label>
+            <select name="hosp-clin-city" id="hosp-clin-city">
+            </select>
           </div>
       </div>
       <div class="hosp-clin-name">
-        <h4>Hospital/Clinic Name</h4>
-        <input type="text" id="hospitalName" placeholder="Enter name...">
+        <label for="hosp-clin-names">Hospital/Clinic Name</label>
+          <select name="hosp-clin-names" id="hosp-clin-names">
+          </select>
       </div>
     </div>
-
     <div class="breaker"></div>
-    
     <div class="patient-info">
       <h4>Patient Information</h4>
       <div class="patient-info-fill">
@@ -107,6 +108,8 @@
 
   <div class="button-choices">
     <button class="buttonC" role="button">Create Appointment</button>
-    <button class="buttonC" role="button">Cancel</button>
+    <a href="mainPage.html">
+      <button class="buttonC" role="button">Cancel</button>
+    </a>
   </div>
 </body>
