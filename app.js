@@ -28,6 +28,16 @@ app.get('/deleteApp', (req, res) => {
   res.render('deleteApp', { title: 'Delete Appointment' });
 });
 
+app.get('/search', async (req, res) => {
+  const appointmentId = req.query.apptid;
+  try {
+    const results = await scripts.searchAppointmentById(appointmentId);
+    res.json(results);
+  } catch (error) {
+    res.status(500).send('Error searching for appointment');
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
