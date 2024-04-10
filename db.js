@@ -29,3 +29,24 @@ const vismin = createPool({
     database: "N03",
     connectionLimit: 10
 });
+
+async function searchAppointmentById(appointmentId) {
+    try {
+        console.log('Executing searchAppointmentById query...');
+        const [results, _] = await central.query('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId]);
+        console.log('Query executed successfully.');
+        console.log('Results:', results);
+        return results;
+    } catch (error) {
+        console.error('Error executing searchAppointmentById query:', error);
+        throw error;
+    }
+}
+
+module.exports = {
+    central,
+    luzon,
+    vismin,
+    searchAppointmentById
+  };
+  
