@@ -129,9 +129,9 @@ async function query(pool) {
 }
 
 // Functions for executing queries on each database with concurrency control
-const queryCentral = query(central);
-const queryLuzon = query(luzon);
-const queryVismin = query(vismin);
+const queryCentral = query(poolConfig1);
+const queryLuzon = query(poolConfig2);
+const queryVismin = query(poolConfig3);
 
 // Function to search appointment by ID across all databases
 async function searchAppointmentById(appointmentId) {
@@ -146,9 +146,9 @@ async function searchAppointmentById(appointmentId) {
 }
 
 module.exports = {
-    central,
-    luzon,
-    vismin,
+    poolConfig1,
+    poolConfig2,
+    poolConfig3,
     searchAppointmentById
 };
 
