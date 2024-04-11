@@ -3,30 +3,31 @@ const { createPool, pool } = require('mysql2');
 
 const app = express();
 
+
 const central = createPool({
-    host: "ccscloud.dlsu.edu.ph",
-    port: 20210,
-    user: "root",
-    password: "rFyY9m3JNa4HUwG2nBkz6sXc",
-    database: "Node01",
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.CENTRAL_DB_NAME,
     connectionLimit: 10
 });
 
 const luzon = createPool({
-    host: "ccscloud.dlsu.edu.ph",
-    port: 20211,
-    user: "root",
-    password: "rFyY9m3JNa4HUwG2nBkz6sXc",
-    database: "Node02",
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT_LUZON,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.LUZON_DB_NAME,
     connectionLimit: 10
 });
 
 const vismin = createPool({
-    host: "ccscloud.dlsu.edu.ph",
-    port: 20212,
-    user: "root",
-    password: "rFyY9m3JNa4HUwG2nBkz6sXc",
-    database: "Node03",
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT_VISMIN,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.VISMIN_DB_NAME,
     connectionLimit: 10
 });
 
@@ -44,5 +45,4 @@ module.exports = {
     luzon,
     vismin,
     searchAppointmentById
-  };
-  
+};

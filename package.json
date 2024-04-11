@@ -10,12 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "express-hbs": "^2.5.0",
     "handlebars": "^4.7.8",
     "hbs": "^4.2.0",
-    "mysql2": "^3.9.4"
+    "mysql2": "^3.9.4",
+    "sequelize": "^6.37.2"
   }
 }
