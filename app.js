@@ -42,6 +42,14 @@ app.get('/deleteApp', (req, res) => {
   res.render('deleteApp');
 });
 
+app.get('/nodeControl', (req, res) => {
+  res.render('nodeControl'); // Renders nodeControlPage.ejs
+});
+
+app.get('/replicationLogs', (req, res) => {
+  res.render('replicationLogs'); // Renders replicationLogs.ejs
+});
+
 //Create appointment
 app.post('/createAppointment', async (req, res) => {
   const appointmentDetails = req.body;

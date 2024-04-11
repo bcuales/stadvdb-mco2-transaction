@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Selection</title>
+    <link rel="stylesheet" href="/public/styles2.css">
+</head>
+<body>
+  <div class="ellipse">
+    <h1>Node Selection</h1>
+  </div>
+
+  <div class="choices">
+      <button class="buttonC" role="button">Start</button>
+    <a href="/replicationLogs">
+      <button class="buttonC" role="button">Replication Logs</button>
+    </a>
+    <a href="/" target="_blank">
+      <button class="buttonA" role="button">Appointment Management</button>
+    </a>  
+  </div>
+
+  <div class="parent-container">
+    <div class="node-squares">
+      <div id="center-node">
+        <h1>Center Node</h1>
+        <img src="../public/images/center-pic.webp" alt="center-pic">
+      </div>
+      <div id="luzon-node">
+        <h1>Luzon Node</h1>
+        <img src="../public/images/luz-visa-pic.webp" alt="luz-visa-pic">
+      </div>
+      <div id="minda-visa-node">
+        <h1>Mindanao & Visayas Node</h1>
+        <img src="../public/images/mindanao-pic.webp" alt="minda-pic">
+      </div>
+    </div>
+
+    <div class="toggle-nodes">
+      <div class="center-switch">
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="luz-visa-switch">
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="mindanao-switch">
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script>
+    // Add your JavaScript code here
+    // For example, you can add event listeners to handle button clicks or checkbox changes
+    // You can also make AJAX requests to the server to fetch data or perform actions
+
+    // Example: Add a click event listener to the "Start" button
+    const startButton = document.querySelector('.buttonC[role="button"]');
+    startButton.addEventListener('click', () => {
+      alert('Start button clicked!');
+      // Add your logic to handle the click event here
+    });
+  </script> -->
+</body>
+</html>
