@@ -1,3 +1,5 @@
+const { searchAppointmentById, deleteAppointmentById } = require('./db');
+
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -38,7 +40,53 @@ app.get('/deleteApp', (req, res) => {
   res.render('deleteApp');
 });
 
-// Search appointment route
+//Create appointment
+app.post('/createAppointment', async (req, res) => {
+  const appointmentDetails = req.body;
+  try {
+      const result = await db.createAppointment(appointmentDetails);
+      res.status(200).send('Appointment created successfully');
+  } catch (error) {
+      console.error('Error creating appointment:', error);
+      res.status(500).send('Error creating appointment');
+  }
+});
+
+
+// Delete appointment
+app.post('/deleteAppointment', async (req, res) => {
+  const appointmentId = req.body.appointmentId;
+  try {
+    const result = await deleteAppointmentById(appointmentId);
+    if (result.affectedRows > 0) {
+      res.send(`Appointment ${appointmentId} deleted successfully`);
+    } else {
+      res.status(404).send('Appointment not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error deleting appointment');
+  }
+});
+
+// Edit appointment
+app.post('/editAppointment', async (req, res) => {
+  const formData = req.body;
+  try {
+    // Call the function to edit the appointment in the database
+    const result = await db.editAppointment(formData);
+    if (result) {
+      res.send('Appointment edited successfully');
+    } else {
+      res.status(404).send('Failed to edit appointment');
+    }
+  } catch (error) {
+    console.error('Error editing appointment:', error);
+    res.status(500).send('Error editing appointment');
+  }
+});
+
+// Search appointment 
 app.post('/searchAppointment', async (req, res) => {
   const appointmentId = req.body.appointmentId;
   try {
@@ -52,23 +100,6 @@ app.post('/searchAppointment', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send('Error searching for appointment');
-  }
-});
-
-
-// Delete appointment
-app.post('/deleteAppointment', async (req, res) => {
-  const appointmentId = req.body.appointmentId;
-  try {
-    const result = await db.deleteAppointmentById(appointmentId);
-    if (result.affectedRows > 0) {
-      res.send(`Appointment ${appointmentId} deleted successfully`);
-    } else {
-      res.status(404).send('Appointment not found');
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error deleting appointment');
   }
 });
 

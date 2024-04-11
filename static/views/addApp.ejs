@@ -106,7 +106,53 @@
   </div>
 
   <div class="button-choices">
-    <button class="buttonC" role="button">Create Appointment</button>
+    <button id="createAppointmentBtn" class="buttonC" role="button">Create Appointment</button>
     <a href="/" class="buttonC" role="button">Cancel</a>
   </div>
+
+  <!-- JavaScript code here -->
+  <script>
+    document.getElementById('createAppointmentBtn').addEventListener('click', async () => {
+      const appointmentType = document.querySelector('input[name="appointmentType"]:checked').value;
+      const appointmentMode = document.querySelector('input[name="appointmentMode"]:checked').value;
+      const doctorsSpecialty = document.getElementById('doctorsSpecialty').value;
+      const hospitalOrClinic = document.querySelector('input[name="hospital-clinic"]:checked').value;
+      const hospitalRegion = document.getElementById('hospitalRegion').value;
+      const hospitalProvince = document.getElementById('hospitalProvince').value;
+      const hospitalCity = document.getElementById('hospitalCity').value;
+      const hospitalName = document.getElementById('hospitalName').value;
+      const patientSex = document.querySelector('input[name="patient-sex"]:checked').value;
+      const patientAge = document.getElementById('patientAge').value;
+
+      try {
+        const response = await fetch('/createAppointment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            appointmentType,
+            appointmentMode,
+            doctorsSpecialty,
+            hospitalOrClinic,
+            hospitalRegion,
+            hospitalProvince,
+            hospitalCity,
+            hospitalName,
+            patientSex,
+            patientAge
+          })
+        });
+        if (response.ok) {
+          alert('Appointment created successfully');
+          // Redirect to another page if needed
+        } else {
+          alert('Failed to create appointment');
+        }
+      } catch (error) {
+        console.error('Error creating appointment:', error);
+      }
+    });
+  </script>
 </body>
+</html>

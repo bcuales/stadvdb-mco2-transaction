@@ -56,12 +56,63 @@ module.exports = {
   pool1,
   pool2,
   pool3,
-  searchAppointmentById // Export the function
+  createAppointment,
+  deleteAppointmentById,
+  editAppointment,
+  searchAppointmentById 
 };
+
+async function createAppointment(appointmentDetails) {
+    try {
+        const { appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge } = appointmentDetails;
+        const query = 'INSERT INTO appointments (appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const values = [appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge];
+        const [result] = await pool.query(query, values);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function deleteAppointmentById(appointmentId) {
+    try {
+        const [result, _] = await pool1.query('DELETE FROM mco2_appts WHERE appointment_id = ?', [appointmentId]);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function editAppointment(formData) {
+    try {
+      // Extract data from the formData object
+      const {
+        appointmentID,
+        appointmentType,
+        appointmentMode,
+        doctorsSpecialty,
+        hospitalClinic,
+        hospitalRegion,
+        hospitalProvince,
+        hospitalCity,
+        hospitalName,
+        patientSex,
+        patientAge
+      } = formData;
+  
+      // Update the appointment in the database using SQL queries
+      const result = await pool1.query('UPDATE appointments SET appointment_type = ?, appointment_mode = ?, doctors_specialty = ?, hospital_clinic = ?, hospital_region = ?, hospital_province = ?, hospital_city = ?, hospital_name = ?, patient_sex = ?, patient_age = ? WHERE appointment_id = ?', [appointmentType, appointmentMode, doctorsSpecialty, hospitalClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge, appointmentID]);
+      
+      // Check if the appointment was successfully edited
+      return result.affectedRows > 0;
+    } catch (error) {
+      throw error;
+    }
+  }
 
 async function searchAppointmentById(appointmentId) {
     try {
-        const [results, _] = await central.query('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId]);
+        const [results, _] = await pool1.query('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId]);
         return results;
     } catch (error) {
         throw error;

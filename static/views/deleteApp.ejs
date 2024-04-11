@@ -17,12 +17,41 @@
       <input type="text" id="delAppID" placeholder="Enter Appointment ID...">
     </div>
     <div class="button-delete">
-      <button class="buttonC" role="button">Delete Appointment</button>
+      <button id="deleteBtn" class="buttonC" role="button">Delete Appointment</button>
       <a href="/" class="buttonC" role="button">Cancel</a>
     </div>
 
     <div class="breaker"></div>
 
     <h2>RESULTS:</h2>
+    <div id="deleteResults"></div>
   </div>
+
+  <!-- JavaScript code here -->
+
+  <script>
+    document.getElementById('deleteBtn').addEventListener('click', async () => {
+      const appointmentId = document.getElementById('delAppID').value;
+      try {
+        const response = await fetch('/deleteAppointment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ appointmentId })
+        });
+        if (response.ok) {
+          const result = await response.text();
+          document.getElementById('deleteResults').textContent = result;
+        } else {
+          const errorMessage = await response.text();
+          document.getElementById('deleteResults').textContent = `Error: ${errorMessage}`;
+        }
+      } catch (error) {
+        console.error('Error deleting appointment:', error);
+        document.getElementById('deleteResults').textContent = 'Error deleting appointment. Please try again.';
+      }
+    });
+  </script>
 </body>
+</html>
