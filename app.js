@@ -1,13 +1,17 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const db = require('./db');
+require('dotenv').config();
+const db = require('./db.js');
+app.set('view engine', 'ejs');
+app.set('access', 0);
+app.set('config', [true, true, true]);
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'static', 'html')));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Routes
