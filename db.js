@@ -8,7 +8,7 @@ const central = createPool({
     port: 20210,
     user: "root",
     password: "rFyY9m3JNa4HUwG2nBkz6sXc",
-    database: "N01",
+    database: "Node01",
     connectionLimit: 10
 });
 
@@ -17,7 +17,7 @@ const luzon = createPool({
     port: 20211,
     user: "root",
     password: "rFyY9m3JNa4HUwG2nBkz6sXc",
-    database: "N02",
+    database: "Node02",
     connectionLimit: 10
 });
 
@@ -26,7 +26,7 @@ const vismin = createPool({
     port: 20212,
     user: "root",
     password: "rFyY9m3JNa4HUwG2nBkz6sXc",
-    database: "N03",
+    database: "Node03",
     connectionLimit: 10
 });
 

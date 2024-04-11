@@ -1,3 +1,5 @@
+<!-- searchApp.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +14,51 @@
   </div>
 
   <div class="search-info">
-    <div class="search-appID">
-      <h3>Appointment ID</h3>
-      <input type="text" id="searchAppID" placeholder="Enter Appointment ID...">
-    </div>
-    <div class="button-search">
-      <button class="buttonC" role="button">Search Appointment</button>
-      <a href="/" class="buttonC" role="button">Cancel</a>
-    </div>
+    <form id="searchForm" action="/searchAppointment" method="POST">
+      <div class="search-appID">
+        <h3>Appointment ID</h3>
+        <input type="text" id="searchAppID" name="appointmentId" placeholder="Enter Appointment ID...">
+      </div>
+      <div class="button-search">
+        <button type="submit" class="buttonC" role="button">Search Appointment</button>
+        <a href="/" class="buttonC" role="button">Cancel</a>
+      </div>
+    </form>
 
     <div class="breaker"></div>
 
     <h2>RESULTS:</h2>
+    <div id="searchResults"></div>
   </div>
+
+  <!-- JavaScript code here -->
+
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+      event.preventDefault(); // Prevent the default form submission behavior
+  
+      const appointmentId = document.getElementById('searchAppID').value;
+      try {
+        const response = await fetch('/searchAppointment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ appointmentId })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          // Display search results using data
+        } else {
+          // Handle the case when the server returns an error
+        }
+      } catch (error) {
+        // Handle errors that occur during the HTTP request
+        console.error('Error searching for appointment:', error);
+      }
+    });
+  </script>
+
+  
 </body>
 </html>
