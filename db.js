@@ -145,12 +145,48 @@ async function searchAppointmentById(appointmentId) {
     }
 }
 
+// perform queries with concurrency control
+async function query(pool) {
+    return async (q, values, mode) => {
+        const connection = await pool.getConnection();
+        try {
+            await connection.query('LOCK TABLES mco2_appts ' + mode);
+            const [results] = await connection.query(q, values);
+            await connection.query('UNLOCK TABLES');
+            return results;
+        } catch (error) {
+            await connection.rollback();
+            throw error;
+        } finally {
+            connection.release();
+        }
+    };
+}
+
+//  executing queries on each database with concurrency control
+const queryCentral = query(central);
+const queryLuzon = query(luzon);
+const queryVismin = query(vismin);
+
+//to search appointment by ID across all databases
+async function searchAppointmentById(appointmentId) {
+    try {
+        const resultsCentral = await queryCentral('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId], 'READ');
+        const resultsLuzon = await queryLuzon('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId], 'READ');
+        const resultsVismin = await queryVismin('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId], 'READ');
+        return [resultsCentral, resultsLuzon, resultsVismin];
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     poolConfig1,
     poolConfig2,
     poolConfig3,
     searchAppointmentById
 };
+<<<<<<< HEAD
 
 async function searchAppointmentById(appointmentId) {
     try {
@@ -160,3 +196,6 @@ async function searchAppointmentById(appointmentId) {
         throw error;
     }
 }
+=======
+  
+>>>>>>> main
