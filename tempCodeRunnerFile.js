@@ -4,8 +4,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('./db');
 
-const port = 3000;
-
 const app = express();
 
 // Set EJS as the view engine
@@ -38,12 +36,12 @@ app.get('/deleteApp', (req, res) => {
   res.render('deleteApp');
 });
 
-// Search appointment route
+// Search appointment
 app.post('/searchAppointment', async (req, res) => {
   const appointmentId = req.body.appointmentId;
   try {
-    // Call the searchAppointmentById function
-    const appointment = await searchAppointmentById(appointmentId);
+    // Perform the search operation in the database using the provided appointmentId
+    const appointment = await db.searchAppointmentById(appointmentId);
     if (appointment) {
       res.json(appointment); // Return the found appointment as JSON
     } else {
