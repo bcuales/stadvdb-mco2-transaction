@@ -91,24 +91,23 @@ async function editAppointment(formData) {
         appointmentType,
         appointmentMode,
         doctorsSpecialty,
-        hospitalClinic,
+        hospitalOrClinic,
         hospitalRegion,
         hospitalProvince,
         hospitalCity,
-        hospitalName,
         patientSex,
         patientAge
       } = formData;
   
       // Update the appointment in the database using SQL queries
-      const result = await pool1.query('UPDATE mco2_appts SET appointment_type = ?, mode_of_appointment = ?, doctor_specialty = ?, hospital_or_clinic_choice = ?, hospital_or_clinic_region = ?, hospital_or_clinic_province = ?, hospital_or_clinic_city = ?, hospital_or_clinic_name = ?, patient_sex = ?, patient_age = ? WHERE appointment_id = ?', [appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge, appointmentID]);
+      const result = await pool1.query('UPDATE mco2_appts SET appointment_type = ?, mode_of_appointment = ?, doctor_specialty = ?, hospital_or_clinic_choice = ?, hospital_or_clinic_region = ?, hospital_or_clinic_province = ?, hospital_or_clinic_city = ?, patient_sex = ?, patient_age = ? WHERE appointment_id = ?', [appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, patientSex, patientAge, appointmentID]);
 
       // Check if the appointment was successfully edited
       return result.affectedRows > 0;
     } catch (error) {
       throw error;
     }
-  }
+}
 
   // Function to search appointment by ID across all databases
 async function searchAppointmentById(appointmentId) {
