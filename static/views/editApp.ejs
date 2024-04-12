@@ -106,56 +106,56 @@
   </div>
 
   <div class="button-choices">
-    <button class="buttonC" role="button">Edit Appointment</button>
+    <button id="updateAppointmentBtn" class="buttonC" role="button">Update Appointment</button>
     <a href="/" class="buttonC" role="button">Cancel</a>
   </div>
 
   <script>
-    document.querySelector('.button-choices button').addEventListener('click', async () => {
-      const appointmentID = document.getElementById('appointmentID').value;
-      const appointmentType = document.querySelector('input[name="appointmentType"]:checked').value;
-      const appointmentMode = document.querySelector('input[name="appointmentMode"]:checked').value;
-      const doctorsSpecialty = document.getElementById('doctorsSpecialty').value;
-      const hospitalOrClinic = document.querySelector('input[name="hospital-clinic"]:checked').value;
-      const hospitalRegion = document.getElementById('hospitalRegion').value;
-      const hospitalProvince = document.getElementById('hospitalProvince').value;
-      const hospitalCity = document.getElementById('hospitalCity').value;
-      const hospitalName = document.getElementById('hospitalName').value;
-      const patientSex = document.querySelector('input[name="patient-sex"]:checked').value;
-      const patientAge = document.getElementById('patientAge').value;
-
-      const formData = {
-        appointmentID,
-        appointmentType,
-        appointmentMode,
-        doctorsSpecialty,
-        hospitalOrClinic,
-        hospitalRegion,
-        hospitalProvince,
-        hospitalCity,
-        hospitalName,
-        patientSex,
-        patientAge
-      };
-
-      try {
-        const response = await fetch('/editAppointment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-        if (response.ok) {
-          alert('Appointment edited successfully');
-        } else {
-          alert('Failed to edit appointment');
-        }
-      } catch (error) {
-        console.error('Error editing appointment:', error);
-        alert('Error editing appointment');
-      }
-    });
+      document.getElementById('updateAppointmentBtn').addEventListener('click', async () => {
+          const appointmentID = document.getElementById('appointmentID').value;
+          const appointmentType = document.querySelector('input[name="appointmentType"]:checked').value;
+          const appointmentMode = document.querySelector('input[name="appointmentMode"]:checked').value;
+          const doctorsSpecialty = document.getElementById('doctorsSpecialty').value;
+          const hospitalOrClinic = document.querySelector('input[name="hospital-clinic"]:checked').value;
+          const hospitalRegion = document.getElementById('hospitalRegion').value;
+          const hospitalProvince = document.getElementById('hospitalProvince').value;
+          const hospitalCity = document.getElementById('hospitalCity').value;
+          const hospitalName = document.getElementById('hospitalName').value;
+          const patientSex = document.querySelector('input[name="patient-sex"]:checked').value;
+          const patientAge = document.getElementById('patientAge').value;
+          
+          try {
+              const response = await fetch('/editAppointment', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      appointmentID,
+                      appointmentType,
+                      appointmentMode,
+                      doctorsSpecialty,
+                      hospitalOrClinic,
+                      hospitalRegion,
+                      hospitalProvince,
+                      hospitalCity,
+                      hospitalName,
+                      patientSex,
+                      patientAge
+                  })
+              });
+              if (response.ok) {
+                  alert('Appointment edited successfully');
+                  // Redirect or perform any other action upon successful edit
+              } else {
+                  alert('Failed to edit appointment');
+              }
+          } catch (error) {
+              console.error('Error editing appointment:', error);
+              alert('Error editing appointment');
+          }
+      });
   </script>
+
 </body>
 </html>

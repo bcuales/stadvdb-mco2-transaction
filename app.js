@@ -83,16 +83,15 @@ app.post('/deleteAppointment', async (req, res) => {
 app.post('/editAppointment', async (req, res) => {
   const formData = req.body;
   try {
-    // Call the function to edit the appointment in the database
-    const result = await db.editAppointment(formData);
-    if (result) {
-      res.send('Appointment edited successfully');
-    } else {
-      res.status(404).send('Failed to edit appointment');
-    }
+      const result = await db.editAppointment(formData);
+      if (result) {
+          res.status(200).send('Appointment edited successfully');
+      } else {
+          res.status(404).send('Failed to edit appointment');
+      }
   } catch (error) {
-    console.error('Error editing appointment:', error);
-    res.status(500).send('Error editing appointment');
+      console.error('Error editing appointment:', error);
+      res.status(500).send('Error editing appointment');
   }
 });
 
