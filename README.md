@@ -7,5 +7,5 @@ npm install:
 - --save-dev supertest chai mocha
 
 How to run tests
-navigate terminal to tests directory
-npx mocha <testname>.test.js
+- navigate terminal to tests directory
+- npx mocha <testname>.test.js
