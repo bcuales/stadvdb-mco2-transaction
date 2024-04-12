@@ -170,7 +170,6 @@ module.exports = {
 };
 
 
-
 async function searchAppointmentById(appointmentId) {
     try {
         const [results, _] = await pool1.query('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId]);

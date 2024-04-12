@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Selection</title>
+    <link rel="stylesheet" href="/public/styles2.css">
+</head>
+<body>
+  <div class="ellipse">
+    <h1>Replication Logs</h1>
+  </div>
+
+  <div class="choices">
+    <a href="/nodeControl">
+      <button class="buttonC" role="button">Node Selection</button>
+    </a>  
+  </div>
+
+  <div class="contents">
+    <table>
+      <thead>
+        <tr>
+          <th>Log ID</th>
+          <th>Timestamp</th>
+          <th>Source Node</th>
+          <th>Target Node</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <!-- Iterate over your data to display replication logs -->
+      <tbody>
+        <% replicationLogs.forEach((log) => { %>
+          <tr>
+            <td><%= log.logId %></td>
+            <td><%= log.timestamp %></td>
+            <td><%= log.sourceNode %></td>
+            <td><%= log.targetNode %></td>
+            <td><%= log.action %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
