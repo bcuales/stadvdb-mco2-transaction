@@ -152,6 +152,22 @@ const queryCentral = query(poolConfig1);
 const queryLuzon = query(poolConfig2);
 const queryVismin = query(poolConfig3);
 
+// Middleware to set the global transaction isolation level
+app.use(async function(req, res, next) {
+    const isolationLevel = process.env.ISOLATIONLEVEL;
+    try {
+        await Promise.all([
+            queryCentral(`SET GLOBAL TRANSACTION ISOLATION LEVEL ${isolationLevel}`),
+            queryLuzon(`SET GLOBAL TRANSACTION ISOLATION LEVEL ${isolationLevel}`),
+            queryVismin(`SET GLOBAL TRANSACTION ISOLATION LEVEL ${isolationLevel}`)
+        ]);
+        console.log("Global transaction isolation level set successfully.");
+        next();
+    } catch (error) {
+        console.error("Error setting global transaction isolation level:", error);
+        next(error);
+    }
+});
 // STEP 3
 // uncomment when testing
 
