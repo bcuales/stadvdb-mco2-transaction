@@ -110,6 +110,16 @@ async function editAppointment(formData) {
     }
   }
 
+  // Function to search appointment by ID across all databases
+async function searchAppointmentById(appointmentId) {
+    try {
+        const [results, _] = await pool1.query('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId]);
+        return results;
+    } catch (error) {
+        throw error;
+    }
+}
+
   // Function to perform queries with concurrency control
 async function query(pool) {
     return async (q, values, mode) => {
@@ -133,30 +143,4 @@ const queryCentral = query(poolConfig1);
 const queryLuzon = query(poolConfig2);
 const queryVismin = query(poolConfig3);
 
-// Function to search appointment by ID across all databases
-async function searchAppointmentById(appointmentId) {
-    try {
-        const resultsCentral = await queryCentral('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId], 'READ');
-        const resultsLuzon = await queryLuzon('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId], 'READ');
-        const resultsVismin = await queryVismin('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId], 'READ');
-        return [resultsCentral, resultsLuzon, resultsVismin];
-    } catch (error) {
-        throw error;
-    }
-}
 
-module.exports = {
-    poolConfig1,
-    poolConfig2,
-    poolConfig3,
-    searchAppointmentById
-};
-
-async function searchAppointmentById(appointmentId) {
-    try {
-        const [results, _] = await pool1.query('SELECT * FROM mco2_appts WHERE appointment_id = ?', [appointmentId]);
-        return results;
-    } catch (error) {
-        throw error;
-    }
-}

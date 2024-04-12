@@ -66,7 +66,12 @@
         const resultList = document.createElement('ul');
         data.forEach(appointment => {
           const listItem = document.createElement('li');
-          listItem.textContent = `Appointment ID: ${appointment.appointment_id}, Date: ${appointment.date}, Time: ${appointment.time}`;
+          listItem.innerHTML = ''; // Clear previous list item content
+          for (const column in appointment) {
+            const columnItem = document.createElement('div');
+            columnItem.textContent = `${column}: ${appointment[column]}`;
+            listItem.appendChild(columnItem);
+          }
           resultList.appendChild(listItem);
         });
         searchResultsDiv.appendChild(resultList);
