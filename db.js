@@ -179,3 +179,44 @@ async function searchAppointmentById(appointmentId) {
     }
 }
 
+// STEP 3
+// uncomment when testing
+
+// Case #1
+/*
+async function simulateCentralNodeCrash() {
+    console.log("Simulating Central Node crash");
+    await new Promise(resolve => setTimeout(resolve, 5000)); // 5 seconds
+    console.log("Central Node back online.");
+}
+*/
+
+
+// Case #2: Node 2 or Node 3 Unavailability and Recovery
+/*
+async function simulateNodeCrash(node) {
+    console.log(`Simulating ${node} Node crash...`);
+    await new Promise(resolve => setTimeout(resolve, 5000)); // 5 seconds
+    console.log(`${node} Node back online.`);
+}
+*/
+
+
+// Case #3: Failure in Writing to the Central Node
+/*
+async function simulateCentralWriteFailure() {
+    console.log("Simulating writing failure to the Central Node");
+    await new Promise(resolve => setTimeout(resolve, 2000)); // 2 seconds
+    console.log("Retrying writing to the Central Node.");
+}
+*/
+
+
+// Case #4: Failure in Writing to Node 2 or Node 3
+/*
+async function simulateNodeWriteFailure(node) {
+    console.log(`Simulating writing failure to ${node} Node`);
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate replication failure
+    console.log(`Retrying writing to ${node} Node`);
+}
+*/
