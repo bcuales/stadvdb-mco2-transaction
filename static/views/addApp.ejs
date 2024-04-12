@@ -110,7 +110,6 @@
     <a href="/" class="buttonC" role="button">Cancel</a>
   </div>
 
-  <!-- JavaScript code here -->
   <script>
     document.getElementById('createAppointmentBtn').addEventListener('click', async () => {
       const appointmentType = document.querySelector('input[name="appointmentType"]:checked').value;
@@ -145,7 +144,7 @@
         });
         if (response.ok) {
           alert('Appointment created successfully');
-          // Redirect to another page if needed
+          // redirect to another page if needed
         } else {
           alert('Failed to create appointment');
         }

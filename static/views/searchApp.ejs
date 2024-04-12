@@ -31,8 +31,6 @@
     <div id="searchResults"></div>
   </div>
 
-  <!-- JavaScript code here -->
-
   <script>
     document.getElementById('searchForm').addEventListener('submit', async (event) => {
       event.preventDefault(); // Prevent the default form submission behavior
@@ -48,17 +46,16 @@
         });
         if (response.ok) {
           const data = await response.json();
-          displaySearchResults(data); // Call function to display search results
+          displaySearchResults(data); // display search results
         } else {
-          // Handle the case when the server returns an error
+          // server returning error
         }
       } catch (error) {
-        // Handle errors that occur during the HTTP request
         console.error('Error searching for appointment:', error);
       }
     });
   
-    // Function to display search results
+    // Display search results
     function displaySearchResults(data) {
       const searchResultsDiv = document.getElementById('searchResults');
       searchResultsDiv.innerHTML = ''; // Clear previous results
