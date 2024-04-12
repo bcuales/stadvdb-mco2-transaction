@@ -65,9 +65,9 @@ module.exports = {
 async function createAppointment(appointmentDetails) {
     try {
         const { appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge } = appointmentDetails;
-        const query = 'INSERT INTO appointments (appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const query = 'INSERT INTO mco2_appts (appointment_id, appointment_type, mode_of_appointment, doctor_specialty, hospital_or_clinic_choice, hospital_or_clinic_region, hospital_or_clinic_province, hospital_or_clinic_city, patient_sex, patient_age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         const values = [appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge];
-        const [result] = await pool.query(query, values);
+        const [result] = await pool1.query(query, values);
         return result;
     } catch (error) {
         throw error;
@@ -101,8 +101,8 @@ async function editAppointment(formData) {
       } = formData;
   
       // Update the appointment in the database using SQL queries
-      const result = await pool1.query('UPDATE appointments SET appointment_type = ?, appointment_mode = ?, doctors_specialty = ?, hospital_clinic = ?, hospital_region = ?, hospital_province = ?, hospital_city = ?, hospital_name = ?, patient_sex = ?, patient_age = ? WHERE appointment_id = ?', [appointmentType, appointmentMode, doctorsSpecialty, hospitalClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge, appointmentID]);
-      
+      const result = await pool1.query('UPDATE mco2_appts SET appointment_type = ?, mode_of_appointment = ?, doctor_specialty = ?, hospital_or_clinic_choice = ?, hospital_or_clinic_region = ?, hospital_or_clinic_province = ?, hospital_or_clinic_city = ?, hospital_or_clinic_name = ?, patient_sex = ?, patient_age = ? WHERE appointment_id = ?', [appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge, appointmentID]);
+
       // Check if the appointment was successfully edited
       return result.affectedRows > 0;
     } catch (error) {
