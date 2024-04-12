@@ -65,14 +65,23 @@ module.exports = {
 async function createAppointment(appointmentDetails) {
     try {
         const { appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge } = appointmentDetails;
+        
+        // Generate a unique appointment ID using timestamp and a random number
+        const appointmentId = `${Date.now()}${Math.floor(Math.random() * 10000)}`;
+
         const query = 'INSERT INTO mco2_appts (appointment_id, appointment_type, mode_of_appointment, doctor_specialty, hospital_or_clinic_choice, hospital_or_clinic_region, hospital_or_clinic_province, hospital_or_clinic_city, patient_sex, patient_age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        const values = [appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge];
+        
+        // Ensure appointmentId is the first value in the values array
+        const values = [appointmentId, appointmentType, appointmentMode, doctorsSpecialty, hospitalOrClinic, hospitalRegion, hospitalProvince, hospitalCity, hospitalName, patientSex, patientAge];
+        
         const [result] = await pool1.query(query, values);
         return result;
     } catch (error) {
         throw error;
     }
 }
+
+
 
 async function deleteAppointmentById(appointmentId) {
     try {
